@@ -1,0 +1,16 @@
+FROM ubuntu:22.04
+
+LABEL version="1.0"
+
+RUN apt update -y \
+&& apt install openjdk-17-jdk -y \
+
+ADD spigot-1.19.4.jar /app/
+ADD start.sh /app/
+WORKDIR /app
+
+EXPOSE 25585
+VOLUME /app
+
+CMD ./start.sh
+
